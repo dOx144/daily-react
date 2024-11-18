@@ -45,7 +45,7 @@ const PracPage = () => {
 
       {/* product title */}
       
-      <ul className="flex items-center justify-center flex-wrap max-w-screen-xl mx-auto  gap-4 *:odd:ring-2">
+      <ul className="flex items-center justify-center flex-wrap max-w-screen-xl mx-auto  gap-4 *:opacity-75 ">
       <PracProduct/>
       <PracProduct/>
       <PracProduct/>

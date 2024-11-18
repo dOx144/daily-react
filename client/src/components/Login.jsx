@@ -1,7 +1,7 @@
 const Login = ({toggle}) => {
   return ( 
 
-    <div className="absolute backdrop-blur-sm h-full w-full flex items-center justify-center overflow-hidden ">
+    <div className="absolute backdrop-blur-sm h-full w-full flex items-center justify-center overflow-hidden z-10">
 
       {/* login closing trigger overlay */}
       <button onClick={toggle} className="h-full w-screen absolute"> </button>
