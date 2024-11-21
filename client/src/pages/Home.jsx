@@ -22,8 +22,8 @@ const Home = () => {
       <Cta link='/weather' goto={'weather'} />
       <Cta link='/food' goto={'food'} />
       <Cta link='/pokemon' goto={'pokemon'} />
-      <motion.div initial={{ x: "100",rotate:180,scale:0 }}
-  animate={{ x: "0",rotate:0,scale:1}} drag={{scale:1.1}} transition={{ease:easeOut, duration: .5}} className='size-40 bg-red-400 rounded-xl' ></motion.div>
+      {/* <motion.div initial={{ x: "100",rotate:180,scale:0 }} */}
+  {/* animate={{ x: "0",rotate:0,scale:1}} drag={{scale:1.1}} transition={{ease:easeOut, duration: .5}} className='size-40 bg-red-400 rounded-xl' ></motion.div> */}
     </div>
   );
 };

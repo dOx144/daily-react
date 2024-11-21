@@ -1,12 +1,8 @@
 const Time = () => {
-  // const curTime = new Date().getTime
-  let i=0;
-  
-  return ( 
-    <div>
-      {i}
-    </div>
-   );
+
+  return(
+    <h2>not needed</h2>
+  )
 }
  
 export default Time;

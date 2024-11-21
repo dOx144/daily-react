@@ -9,6 +9,7 @@ import Pokemon from "./pages/Pokemon"
 import Weather from "./pages/Weather"
 import Food from "./pages/Food"
 import Blogs from "./pages/Blogs"
+import './index.css'
 
 function App() {
 
