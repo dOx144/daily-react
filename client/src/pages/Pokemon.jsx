@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import PokemonCard from "../components/Pokemon/PokemonCard";
 import PokemonList from "../components/Pokemon/PokemonList";
+import GoButton from "../components/GoButton";
 
 
 const Pokemon = () => {
@@ -106,10 +107,13 @@ const Pokemon = () => {
 
 
   return ( 
-    <div className="w-full px-4 sm:max-w-screen-xl mx-auto lg:my-32 sm:my-24 my-8 space-y-12">
-      <h2 className="text-xl sm:text-2xl lg:text-5xl font-semibold">Welcome to Wikimon Page</h2>
+    <div className="px-4 max-w-screen-xl mx-auto lg:my-32 sm:my-24 my-8 space-y-12">
+      <div className="w-full flex flex-col sm:flex-row items-center justify-between">
+      <h2 className="text-2xl lg:text-5xl font-semibold transition-all">Welcome to Wikimon Page</h2>
+      <GoButton link='/' name={'home'}/>
+      </div>
 
-      <form onSubmit={searchData} className="w-full space-x-4">
+      <form onSubmit={searchData} className="w-full space-x-4 flex  items-center justify-start">
         <input
           value={pokemonQuery} 
           onChange={(e)=>{setPokemonQuery(e.target.value)}}
