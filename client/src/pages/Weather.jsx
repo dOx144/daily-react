@@ -1,15 +1,15 @@
 import GoButton from "../components/GoButton";
 import { useEffect, useState } from "react";
 import UserLocation from "../components/weather app/UserLocation";
-import { useSearchParams } from "react-router-dom";
+
 
 const Weather = () => {
-
+  
   const [weatherData, setWeatherData] = useState(null)
   const [name, setname]=useState('')
   const [country, setCountry]=useState('')
   const [temp, setTemp]=useState('')
-  const weatherUrl= 'https://api.openweathermap.org/data/2.5/weather?q=moscow&appid=0011e5889505b2eb43a09d41aea8f65f'
+  const weatherUrl= `https://api.openweathermap.org/data/2.5/weather?q=moscow&appid=${import.meta.env.VITE_WEATHER_APP}`
   const [locQuery,setLocQuery] = useState('')
 
   // kelvin to degree
