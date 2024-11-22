@@ -16,14 +16,10 @@ const Weather = () => {
     lon:null
   })
   const [rain, setRain] = useState({
-    Rain:null,
-    type:null,
-    wind:null,
-    deg:null,
-    humidity:null,
-    rainPer:null,
-  })
-
+    weather:[],
+    main:'',
+    wind:''
+  });
   // const [isErr,setIsErr] = useState(false)
   const [locQuery,setLocQuery] = useState('kathmandu')
   const weatherUrl= `https://api.openweathermap.org/data/2.5/weather?q=${locQuery}&appid=${import.meta.env.VITE_WEATHER_APP}`
@@ -67,19 +63,15 @@ const Weather = () => {
 
       setRain(prev => ({
         ...prev,
-        Rain: data.weather?.main || "Unknown",    // Default to "Unknown" if undefined
-        type: data.weather?.description || "None", // Default to "None"
-        wind: data.weather?.wind?.speed || 0,    // Default to 0
-        deg: data.weather?.wind?.deg || 0,       // Default to 0
-        humidity: data.main?.humidity || 0,      // Default to 0
-        rainPer: data.rain || 0                  // Default to 0 if no rain data
+          weather:data?.weather || null,
+          main:data?.main || null,
+          wind:data?.wind || null,
       }));
 
     }catch(err){
       alert(err.message)
       setLocQuery('')
       console.log(err.message);
-      // setIsErr(true)
     }
   }
 
@@ -94,8 +86,11 @@ const Weather = () => {
     {
       alert('Please put the city name first!')
     }
+
+    // console.log(rain);
+
     e.preventDefault()
-    console.log(rain);
+
     fetchWeatherData()
     console.log(`User is Searching for the weather in  "${locQuery}"`);
   }
@@ -129,11 +124,29 @@ const Weather = () => {
       <div className="w-full grid grid-cols-1 lg:grid-cols-3 items-center justify-center gap-2 ">
 
         {/* main content */}
-        <UserLocation space={2} name={name} country={country} temp={temp} kel={kel}/>
-        <GoldenHour />
-        <LonLat lat={cord.lat} lon={cord.lon} />
+        <UserLocation 
+        space={2} 
+        name={name}
+        country={country}
+        temp={temp}
+        kel={kel}/>
 
-        <WeatherWind space={2}/>
+        <GoldenHour />
+
+        <LonLat
+        lat={cord.lat}
+        lon={cord.lon}
+        />
+
+        <WeatherWind 
+        space={2} 
+        main = {rain.weather[0]?.main}
+        mainType = {rain.weather[0]?.description}
+        speed={rain.wind.speed}
+        deg = {rain.wind.deg}
+        humidity={rain.main.humidity}
+        />
+
       </div>
     </div>
 
