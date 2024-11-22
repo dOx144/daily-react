@@ -1,30 +1,12 @@
 import { useEffect, useState } from "react";
 import Time from "./Time";
 
-const UserLocation = ({space, pos, name, country, temp}) => {
+const UserLocation = ({space, pos, name, country, temp,kel}) => {
 
+  const [isCelc, setIsCelc] = useState(true)
   const [curHour, setCurHour] = useState(null)
   const [curMin, setcurMin] = useState(null)
   const [curSec, setcurSec] = useState(null)
-
-
-  // checking am or pm
-  function checkAmPm(x){
-    if(x<12){
-      return 'AM'
-    }
-    return "PM"
-  }
-
-  // setInterval for time update
-  setInterval(() => {
-    const temp = new Date()
-    const curSec = temp.getSeconds()
-    setCurHour(temp.getHours())
-    setcurMin(temp.getMinutes())
-    setcurSec(temp.getSeconds())
-    checkAmPm(temp.getHours())
-  }, 1000);
 
   // go get day and use it in switch
   const day = new Date().getDay()
@@ -75,7 +57,7 @@ const UserLocation = ({space, pos, name, country, temp}) => {
 
   return ( 
 
-      <div className={`${space && 'col-span-2'} hover:shadow-md hover:shadow-yellow-500 text-black cursor-pointer bg-white min-w-fit space-y-4 ring-1 w-full p-4 rounded-xl hover:scale-105  transition-all`}>
+    <div className={`${space && 'col-span-2'} hover:shadow-md hover:shadow-yellow-500 text-black cursor-pointer bg-white min-w-fit space-y-4 ring-1 w-full p-4 rounded-xl hover:scale-105  transition-all`}>
         {/* location */}
         <div className="flex items-center justify-between">
           <h2 className="text-sm">
@@ -83,11 +65,14 @@ const UserLocation = ({space, pos, name, country, temp}) => {
               {name}
             </span>
               ,{country}</h2>
-          <button>🔍</button>
+            <div className="flex gap-2">
+              <button onClick={()=>setIsCelc(true)} className={`size-8 ${isCelc ? 'text-black bg-yellow-400' : 'bg-slate-400'} rounded-md text-white`}>°C</button>
+              <button onClick={()=>setIsCelc(false)} className={`size-8 ${isCelc ?  'bg-slate-400' : 'text-black bg-yellow-400'} rounded-md text-white`}>°F</button>
+            </div>
         </div>
 
         {/* temp status */}
-        <p className={`${pos ? `text-${pos}xl` : 'text-5xl' } md:text-8xl transition-all`}><span>{temp}</span>°C</p>
+        <p className={`${pos ? `text-${pos}xl` : 'text-5xl' }  md:text-8xl transition-all`}><span>{isCelc ? temp + '°C' : kel + "°F"}</span></p>
 
 
         {/* extra information */}
@@ -96,14 +81,7 @@ const UserLocation = ({space, pos, name, country, temp}) => {
 
           <div className="text-sm text-slate-500 flex items-center justify-between">
             <p>{today}</p>
-            <div className="flex gap-1">
-              <p>{curHour}</p>:
-              <p>{curMin}</p>:
-              <p>{curSec}</p>
-              <p>
-              {checkAmPm()}
-              </p>
-            </div>
+           {/* <Time/> */}
           </div>
 
         </div>

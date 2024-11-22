@@ -10,7 +10,7 @@ const PokemonList = ({pokemons}) => {
   // ];
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div className="text-black grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {pokemons.map((pokemon, index) => (
         <PokemonCard key={`${pokemon.name}+ ${index}`} name={pokemon.name} />
       ))}

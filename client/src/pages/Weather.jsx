@@ -1,16 +1,32 @@
 import GoButton from "../components/GoButton";
 import { useEffect, useState } from "react";
 import UserLocation from "../components/weather app/UserLocation";
-
+import GoldenHour from "../components/weather app/GoldenHour";
+import LonLat from "../components/weather app/LonLat";
+import WeatherWind from "../components/weather app/WeatherWind";
 
 const Weather = () => {
-  
   const [weatherData, setWeatherData] = useState(null)
   const [name, setname]=useState('')
   const [country, setCountry]=useState('')
-  const [temp, setTemp]=useState('')
-  const weatherUrl= `https://api.openweathermap.org/data/2.5/weather?q=moscow&appid=${import.meta.env.VITE_WEATHER_APP}`
-  const [locQuery,setLocQuery] = useState('')
+  const [temp, setTemp]=useState(null)
+  const [kel, setKel] = useState(null)
+  const [cord, setCord] = useState({
+    lat:null,
+    lon:null
+  })
+  const [rain, setRain] = useState({
+    Rain:null,
+    type:null,
+    wind:null,
+    deg:null,
+    humidity:null,
+    rainPer:null,
+  })
+
+  // const [isErr,setIsErr] = useState(false)
+  const [locQuery,setLocQuery] = useState('kathmandu')
+  const weatherUrl= `https://api.openweathermap.org/data/2.5/weather?q=${locQuery}&appid=${import.meta.env.VITE_WEATHER_APP}`
 
   // kelvin to degree
   const kToC =(k)=>{
@@ -27,26 +43,60 @@ const Weather = () => {
     try{
       const res = await fetch(weatherUrl)
       if(!res.ok){
-        throw new Error(`Couldn't fetch the data: ${res.status} ${res.statusText}`)
+
+        // if(res.status === 404){
+          throw new Error("Please Enter Correct City name")
+        // }
+
+        // throw new Error(`Couldn't fetch the data: ${res.status} ${res.statusText}`)
       }
       const data = await res.json()
+      
+      console.log(data);
       // console.log(data,data.name,data.main.temp,typeof(data));
+
       setWeatherData(data)
       setCountry(data.sys.country)
       setname(data.name)
       setTemp(kToC(data.main.temp))
+      setKel(data.main.temp)
+
+      setCord(prev=>({
+        ...prev,lat : data.coord.lat, lon:data.coord.lon
+      }))
+
+      setRain(prev => ({
+        ...prev,
+        Rain: data.weather?.main || "Unknown",    // Default to "Unknown" if undefined
+        type: data.weather?.description || "None", // Default to "None"
+        wind: data.weather?.wind?.speed || 0,    // Default to 0
+        deg: data.weather?.wind?.deg || 0,       // Default to 0
+        humidity: data.main?.humidity || 0,      // Default to 0
+        rainPer: data.rain || 0                  // Default to 0 if no rain data
+      }));
 
     }catch(err){
-      console.error(err.message)
+      alert(err.message)
+      setLocQuery('')
+      console.log(err.message);
+      // setIsErr(true)
     }
   }
 
   // useEffect 
   useEffect(()=>{
     fetchWeatherData()
+    setLocQuery('')
   },[])
 
-  function userSearch(){
+  function userSearch(e){
+    if(locQuery.trim()==='')
+    {
+      alert('Please put the city name first!')
+    }
+    e.preventDefault()
+    console.log(rain);
+    fetchWeatherData()
     console.log(`User is Searching for the weather in  "${locQuery}"`);
   }
 
@@ -54,31 +104,36 @@ const Weather = () => {
   return ( 
   
     <div className="w-full text-white md:max-w-screen-xl mx-auto mt-8 md:mt-24 p-4 md:p-8 space-y-8 md:space-y-16">
-      <div className="flex flex-col sm:flex-row  justify-between items-center">
+      <div className="flex justify-between items-center">
         <h2 className="text-4xl lg:text-6xl font-semibold">Weather App</h2>
         <GoButton link={'/'} name={'home'}/>
       </div>
       
       {/* location query section */}
-      <div className="flex w-grow gap-2 md:gap-4 items-center justify-between max-w-screen-sm">
+      <form onSubmit={(e)=>userSearch(e)} className="flex w-grow gap-2 md:gap-4 items-center justify-between max-w-screen-lg lg:max-w-screen-md">
         <input
          value={locQuery} 
          onChange={e=>setLocQuery(e.target.value)}
-        className="ring-2 flex-grow p-3 rounded-xl font-semibold focus:ring-yellow-400 focus:outline-none text-yellow-500"
+        className="ring-2 flex-grow p-3 rounded-xl font-semibold focus:ring-yellow-400 focus:outline-none text-slate-800"
         type="search"
         placeholder="Enter Location / City" />
-        <button 
-        onClick={()=>userSearch()}
-        className="ring-1 px-5 py-2 rounded-xl hover:bg-yellow-400 hover:text-white hover:ring-0 text-xl font-semibold transition-all active:scale-95"><span>🔍</span> Search</button>
-      </div>
+        <button type="submit"
+        className="ring-1 px-5 py-2 rounded-xl hover:bg-yellow-400 hover:text-white hover:ring-0 text-xl font-semibold transition-all active:scale-95">🔍<span className="hidden md:inline"> Search</span></button>
+      </form>
+
+      {/* div when error */}
+      {/* {isErr && (<div className="text-red-300 text-4xl">{isErr.message}</div>)} */}
+
 
       {/* content */}
-      <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 sm:gap-3 gap-2">
-        
+      <div className="w-full grid grid-cols-1 lg:grid-cols-3 items-center justify-center gap-2 ">
+
         {/* main content */}
-        <UserLocation space={2} name={name} country={country} temp={temp}/>
+        <UserLocation space={2} name={name} country={country} temp={temp} kel={kel}/>
+        <GoldenHour />
+        <LonLat lat={cord.lat} lon={cord.lon} />
 
-
+        <WeatherWind space={2}/>
       </div>
     </div>
 

@@ -107,7 +107,7 @@ const Pokemon = () => {
 
 
   return ( 
-    <div className="px-4 max-w-screen-xl mx-auto lg:my-32 sm:my-24 my-8 space-y-12">
+    <div className="px-4 text-white max-w-screen-xl mx-auto lg:my-32 sm:my-24 my-8 space-y-12">
       <div className="w-full flex flex-col sm:flex-row items-center justify-between">
       <h2 className="text-2xl lg:text-5xl font-semibold transition-all">Welcome to Wikimon Page</h2>
       <GoButton link='/' name={'home'}/>
@@ -120,7 +120,7 @@ const Pokemon = () => {
           type="search" 
           name="search" 
           id="search" 
-          className="outline outline-1 rounded-sm p-3 w-full md:max-w-screen-sm md:rounded-md text-xl" 
+          className="text-black font-semibold outline outline-1 rounded-sm p-3 w-full md:max-w-screen-sm md:rounded-md text-xl" 
           placeholder="Search for pokemon" />
 
         <button 
