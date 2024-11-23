@@ -5,22 +5,14 @@ const Blogs = () => {
     <div className="text-white after:w-full sm:max-w-screen-xl mx-auto sm:my-24 lg:my-32 space-y-8 p-4">
 
       {/* blogs nav */}
-      <div>
+      {/* <div>
         <BlogNav/>
-      </div>
+      </div> */}
 
 
       {/* main body */}
-      <div>
-
-        <div className="ring-2 w-full">
-          <div >
-            <h2>First post</h2>
-            <div>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia quas neque explicabo aliquid. Quos quod ea minima, aspernatur officia placeat?</p>
-            </div>
-          </div>
-        </div>
+      <div className="text-white w-full max-w-screen-2xl mx-auto text-center  flex min-h-screen justify-center items-center">
+        <h2 className="ring-2 w-full p-4 shadow-2xl shadow-yellow-700 rounded-xl ">Waiting for the blog app design.</h2>
       </div>
     </div>
 
