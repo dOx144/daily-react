@@ -4,9 +4,12 @@ import Time from "./Time";
 const UserLocation = ({space, pos, name, country, temp,kel}) => {
 
   const [isCelc, setIsCelc] = useState(true)
-  const [curHour, setCurHour] = useState(null)
-  const [curMin, setcurMin] = useState(null)
-  const [curSec, setcurSec] = useState(null)
+
+  // func to convert kel to far
+  const toFar =(x)=>{
+    const tempo = (kel - 273.15) * (9/5) + 32
+     return tempo.toFixed(2)
+  }
 
   // go get day and use it in switch
   const day = new Date().getDay()
@@ -57,7 +60,7 @@ const UserLocation = ({space, pos, name, country, temp,kel}) => {
 
   return ( 
 
-    <div className={`${space && 'col-span-2'} hover:shadow-md hover:shadow-yellow-500 text-black cursor-pointer bg-white min-w-fit space-y-4 ring-1 w-full p-4 rounded-xl hover:scale-105  transition-all duration-[5s]`}>
+    <div className={`${space && 'col-span-2'} hover:shadow-md hover:shadow-yellow-500 text-black cursor-pointer bg-white min-w-fit space-y-4 ring-1 w-full p-4 rounded-xl hover:scale-105  transition-all flex flex-col justify-between`}>
         {/* location */}
         <div className="flex items-center justify-between">
           <h2 className="text-sm">
@@ -72,7 +75,7 @@ const UserLocation = ({space, pos, name, country, temp,kel}) => {
         </div>
 
         {/* temp status */}
-        <p className={`${pos ? `text-${pos}xl` : 'text-5xl' }  md:text-8xl transition-all`}><span>{isCelc ? temp + '°C' : kel + "°F"}</span></p>
+        <p className={`${pos ? `text-${pos}xl` : 'text-5xl' }  md:text-8xl transition-all`}><span>{isCelc ? temp + '°C' : toFar(kel) + "°F"}</span></p>
 
 
         {/* extra information */}

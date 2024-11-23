@@ -11,6 +11,7 @@ const Weather = () => {
   const [country, setCountry]=useState('')
   const [temp, setTemp]=useState(null)
   const [kel, setKel] = useState(null)
+  const [wetTime, setWetTime] = useState(0)
   const [cord, setCord] = useState({
     lat:null,
     lon:null
@@ -48,7 +49,7 @@ const Weather = () => {
       }
       const data = await res.json()
       
-      console.log(data);
+      // console.log(data);
       // console.log(data,data.name,data.main.temp,typeof(data));
 
       setWeatherData(data)
@@ -56,6 +57,7 @@ const Weather = () => {
       setname(data.name)
       setTemp(kToC(data.main.temp))
       setKel(data.main.temp)
+      setWetTime(data.sys)
 
       setCord(prev=>({
         ...prev,lat : data.coord.lat, lon:data.coord.lon
@@ -92,7 +94,7 @@ const Weather = () => {
     e.preventDefault()
 
     fetchWeatherData()
-    console.log(`User is Searching for the weather in  "${locQuery}"`);
+    console.log(`User is Searching for the weather in  "${locQuery}"   -{IG @rashik_tamang}-`);
   }
 
 
@@ -109,7 +111,7 @@ const Weather = () => {
         <input
          value={locQuery} 
          onChange={e=>setLocQuery(e.target.value)}
-        className="ring-2 flex-grow p-3 rounded-xl font-semibold focus:ring-yellow-400 focus:outline-none text-slate-800"
+        className="capitalize ring-2 flex-grow p-3 rounded-xl font-semibold focus:ring-yellow-400 focus:outline-none text-slate-800"
         type="search"
         placeholder="Enter Location / City" />
         <button type="submit"
@@ -121,22 +123,21 @@ const Weather = () => {
 
 
       {/* content */}
-      <div className="w-full grid grid-cols-1 lg:grid-cols-3 items-center justify-center gap-2 ">
+      <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-2">
 
         {/* main content */}
+
+        <GoldenHour
+         rise={wetTime?.sunrise || 0} 
+         sSet={wetTime?.sunset || 0} 
+         space={false}/>
+
         <UserLocation 
-        space={2} 
+        space={true} 
         name={name}
         country={country}
         temp={temp}
         kel={kel}/>
-
-        <GoldenHour />
-
-        <LonLat
-        lat={cord.lat}
-        lon={cord.lon}
-        />
 
         <WeatherWind 
         space={2} 
@@ -145,7 +146,14 @@ const Weather = () => {
         speed={rain.wind.speed}
         deg = {rain.wind.deg}
         humidity={rain.main.humidity}
+        />  
+
+        <LonLat
+        lat={cord.lat}
+        lon={cord.lon}
         />
+
+      
 
       </div>
     </div>
