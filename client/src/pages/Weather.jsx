@@ -4,6 +4,7 @@ import UserLocation from "../components/weather app/UserLocation";
 import GoldenHour from "../components/weather app/GoldenHour";
 import LonLat from "../components/weather app/LonLat";
 import WeatherWind from "../components/weather app/WeatherWind";
+import Socials from "../components/Socials";
 
 const Weather = () => {
   const [weatherData, setWeatherData] = useState(null)
@@ -154,6 +155,7 @@ const Weather = () => {
         />  
       
       </div>
+      <Socials/>
     </div>
 
   );

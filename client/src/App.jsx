@@ -10,6 +10,7 @@ import Weather from "./pages/Weather"
 import Food from "./pages/Food"
 import Blogs from "./pages/Blogs"
 import './index.css'
+import Socials from "./components/Socials"
 
 function App() {
 
