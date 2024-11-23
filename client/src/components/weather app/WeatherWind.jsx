@@ -12,7 +12,7 @@ const WeatherWind = ({space, main, mainType, speed, deg, humidity}) => {
         </div>  
       <div className="min-h-full font-semibold text-slate-500 flex justify-between gap-8 ">
        
-        <div className="w-full">
+        <div className="w-full *:bg-slate-100 *:p-1 *:rounded-md text-slate-800 space-y-1">
           <div className="flex w-full items-center justify-between">
             <h2>Wind</h2>
             <p className="text-slate-900">{speed} km/h</p>
@@ -23,7 +23,7 @@ const WeatherWind = ({space, main, mainType, speed, deg, humidity}) => {
           </div>
         </div>
 
-        <div className="w-full" >
+        <div className="w-full *:bg-slate-100 *:p-1 *:rounded-md text-slate-800 space-y-1" >
           <div className="flex w-full items-center justify-between">
             <h2>Humidity</h2>
             <p className="text-slate-900">{humidity}%</p>

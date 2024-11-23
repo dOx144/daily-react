@@ -100,7 +100,7 @@ const Weather = () => {
 
   return ( 
   
-    <div className="w-full text-white md:max-w-screen-xl mx-auto mt-8 md:mt-24 p-4 md:p-8 space-y-8 md:space-y-16">
+    <div className="w-full text-white overflow-hidden md:max-w-screen-xl mx-auto mt-8 md:mt-24 p-4 md:p-8 space-y-8 md:space-y-16">
       <div className="flex justify-between items-center">
         <h2 className="text-4xl lg:text-6xl font-semibold">Weather App</h2>
         <GoButton link={'/'} name={'home'}/>
@@ -123,14 +123,9 @@ const Weather = () => {
 
 
       {/* content */}
-      <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-2">
+      <div className="w-full grid grid-cols-1 lg:grid-cols-3 gap-2">
 
         {/* main content */}
-
-        <GoldenHour
-         rise={wetTime?.sunrise || 0} 
-         sSet={wetTime?.sunset || 0} 
-         space={false}/>
 
         <UserLocation 
         space={true} 
@@ -139,6 +134,16 @@ const Weather = () => {
         temp={temp}
         kel={kel}/>
 
+        <GoldenHour
+         rise={wetTime?.sunrise || 0} 
+         sSet={wetTime?.sunset || 0} 
+         space={false}/>
+
+        <LonLat
+        lat={cord.lat}
+        lon={cord.lon}
+        />
+      
         <WeatherWind 
         space={2} 
         main = {rain.weather[0]?.main}
@@ -147,14 +152,7 @@ const Weather = () => {
         deg = {rain.wind.deg}
         humidity={rain.main.humidity}
         />  
-
-        <LonLat
-        lat={cord.lat}
-        lon={cord.lon}
-        />
-
       
-
       </div>
     </div>
 
