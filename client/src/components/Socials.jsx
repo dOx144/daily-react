@@ -10,7 +10,7 @@ const Socials = () => {
   const SocLinks = [
   {
     name:"Instagram",
-    goto:'https://www.instagram.com/@rashik_tamang',
+    goto:'https://www.instagram.com/rashik_tamang',
     icon:<IoLogoInstagram />
   },
   {
