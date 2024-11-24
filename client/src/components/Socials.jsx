@@ -24,7 +24,7 @@ const Socials = () => {
       <ul className="flex">
         {
           SocLinks.map((e, i)=>(
-            <Link className="flex gap-2 items-center justify-start hover:ring-1 transition-all p-2" key={e + i} to={e.goto}><span>{e.icon}</span><span className="hidden sm:inline">{e.name}</span></Link>
+            <Link className="flex gap-2 items-center justify-start hover:ring-1 hover:rounded-md hover:shadow-yellow-400 hover:shadow-md hover:-translate-y-1 transition-all p-2" key={e + i} to={e.goto}><span>{e.icon}</span><span className="hidden sm:inline">{e.name}</span></Link>
           ))
         }
       </ul>
