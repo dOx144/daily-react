@@ -1,6 +1,9 @@
 const IntroCard = ({name, type, role, primary}) => {
+  const clgHero = () => {
+    console.log('User Clicked' + name);
+  }
   return ( 
-    <div className="p-4 bg-[#F0F2A6] cursor-pointer hover:scale-105 transition-all shadow-2xl rounded-md text-black">
+    <div onClick={()=>clgHero()} className="p-4 bg-[#F0F2A6] cursor-pointer hover:scale-105 transition-all shadow-2xl rounded-md text-black">
       <h2 className="text-3xl font-semibold lg:text-4xl min-w-fit">{name}</h2>
       <div className="-space-y-2 text-slate-600">
         <p>
