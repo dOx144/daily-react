@@ -12,7 +12,7 @@ const Home = () => {
   const [newItem, setNewItem] = useState({ title: '', description: '' });
 
   return (
-    <div className=' flex flex-col h-screen items-center justify-between'>
+    <div className=' flex flex-col p-4 h-screen items-center justify-between'>
       {/* <div>
         <h2 className="text-xl font-bold">Revised To-do List</h2>
         <AddItem setItems={setItems} />

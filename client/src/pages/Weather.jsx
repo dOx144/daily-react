@@ -101,7 +101,7 @@ const Weather = () => {
 
   return ( 
   
-    <div className="w-full text-white overflow-hidden md:max-w-screen-xl mx-auto mt-8 md:mt-24 p-4 md:p-8 space-y-8 md:space-y-16">
+    <div className="w-full text-white overflow-hidden md:max-w-screen-xl mx-auto mt-8  p-4  space-y-8 md:space-y-16">
       <div className="flex justify-between items-center">
         <h2 className="text-4xl lg:text-6xl font-semibold">Weather App</h2>
         <GoButton link={'/'} name={'home'}/>

@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
 import HeroShowcase from "../components/dota/HeroShowcase";
 import Socials from '../components/Socials';
+import Loading from "../components/Loading";
+import HeroSearch from "../components/dota/HeroSearch";
 
 const Dota = () => {
   
-  const [userQuery, setUserQuery] = useState('')
   const [heroes, setHeroes] = useState([])
+  const [isLoading,setIsLoading] = useState(true)
+  const [heroId, setHeroId] = useState('')
   const [attri, setAttri] = useState([
     {
       value:'agi',
@@ -48,6 +51,8 @@ const Dota = () => {
     
     // console.log(data);
     setHeroes(data)
+    setIsLoading(false)
+
     }catch(err){
       console.error(err.message)
     }
@@ -57,17 +62,7 @@ const Dota = () => {
     getHeroes()
   },[])
 
-  const getDotaHero = (e) =>{
-   
-    e.preventDefault()
-
-    if(!userQuery){
-      console.log('No inputs');
-      return
-    }
-    console.log('User is Searching for:' + userQuery);
-    setUserQuery('')
-  }
+  
 
   const checkActiveAttri = (e) =>{
     setActiveAttri(prev=>[...prev,e.target.value])
@@ -90,19 +85,8 @@ const Dota = () => {
       {/* main content */}
       <div className="space-y-4">
         
-        {/* query / search */}
-        <form onSubmit={e=>getDotaHero(e)} className="flex gap-2 items-center w-full max-w-screen-sm *:rounded-md">
-          <input 
-          type="search"
-          name="search"
-          placeholder=" Antimage "
-          value={userQuery}
-          onChange={(e)=>setUserQuery(e.target.value)}
-          className="flex-grow p-2 text-black active:outline-none focus-within:outline-none focus-within:shadow-md focus-within:shadow-yellow-400" />
-          <button 
-          className="py-2 px-4 md:px-5 bg-yellow-400 text-black outline-none"
-          type="submit">Search</button>
-        </form>
+      {/* query / search */}
+      <HeroSearch/>
 
       {/* filter section  */}
         <div className="">
@@ -142,6 +126,9 @@ const Dota = () => {
             </div>
           </div>
         </div>
+
+      {/* {loading} */}
+      {isLoading && <Loading/>}
 
       {/* hero showcase */}
       <HeroShowcase heroes={heroes}/>

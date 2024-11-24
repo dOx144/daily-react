@@ -14,6 +14,7 @@ import './index.css'
 import Socials from "./components/Socials"
 import NoBlogs from "./pages/NoBlogs"
 import Dota from "./pages/Dota"
+import DotaHero from "./pages/DotaHero"
 
 function App() {
 
@@ -28,7 +29,9 @@ function App() {
         <Route path="/container" element={<Container/>}/>
 
         <Route path="/pokemon" element={<Pokemon/>}/>
+
         <Route path="/dota" element={<Dota/>} />
+        <Route path="/dota/:id" element={<DotaHero/>}/>
 
         <Route path="/weather" element={<Weather/>}/>
         
