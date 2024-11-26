@@ -22,7 +22,7 @@ const IntroCard = ({name, type, role, primary, id}) => {
       <h2 className="text-3xl font-semibold lg:text-4xl min-w-fit">{name}</h2>
       <div className="-space-y-2 text-slate-600">
         <p className="flex items-center min-w-fit">
-          <span className="text-sm basis-1/3 min-w-fit">Primary attribute </span> 
+          <span className="text-sm basis-1/3 min-w-fit">Primary </span> 
           <span className="text-base font-semibold capitalize ">: {primary}</span>
         </p>
         <p className="flex items-center">

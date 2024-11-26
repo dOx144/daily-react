@@ -5,6 +5,7 @@ import GoldenHour from "../components/weather app/GoldenHour";
 import LonLat from "../components/weather app/LonLat";
 import WeatherWind from "../components/weather app/WeatherWind";
 import Socials from "../components/Socials";
+import Loading from "../components/Loading";
 
 const Weather = () => {
   const [weatherData, setWeatherData] = useState(null)
@@ -13,6 +14,7 @@ const Weather = () => {
   const [temp, setTemp]=useState(null)
   const [kel, setKel] = useState(null)
   const [wetTime, setWetTime] = useState(0)
+  const [isLoading, setIsLoading] = useState(true)
   const [cord, setCord] = useState({
     lat:null,
     lon:null
@@ -70,11 +72,11 @@ const Weather = () => {
           main:data?.main || null,
           wind:data?.wind || null,
       }));
+      setIsLoading(false)
 
     }catch(err){
-      alert(err.message)
+      console.error(err.message)
       setLocQuery('')
-      console.log(err.message);
     }
   }
 
@@ -85,16 +87,16 @@ const Weather = () => {
   },[])
 
   function userSearch(e){
+    setIsLoading(true)
     if(locQuery.trim()==='')
     {
       alert('Please put the city name first!')
     }
 
     // console.log(rain);
-
     e.preventDefault()
-
     fetchWeatherData()
+    setIsLoading(false)
     console.log(`User is Searching for the weather in  "${locQuery}"   -{IG @rashik_tamang}-`);
   }
 
@@ -103,7 +105,7 @@ const Weather = () => {
   
     <div className="w-full text-white overflow-hidden md:max-w-screen-xl mx-auto mt-8  p-4  space-y-8 md:space-y-16">
       <div className="flex justify-between items-center">
-        <h2 className="text-4xl lg:text-6xl font-semibold">Weather App</h2>
+        <h2 className="text-4xl lg:text-6xl font-semibold cursor-default">Weather App</h2>
         <GoButton link={'/'} name={'home'}/>
       </div>
       
@@ -122,12 +124,12 @@ const Weather = () => {
       {/* div when error */}
       {/* {isErr && (<div className="text-red-300 text-4xl">{isErr.message}</div>)} */}
 
+      {isLoading ? <Loading/> :
 
-      {/* content */}
-      <div className="w-full grid grid-cols-1 lg:grid-cols-3 gap-2">
+      (
+      <div className="w-full grid grid-cols-1 lg:grid-cols-3 gap-1">
 
         {/* main content */}
-
         <UserLocation 
         space={true} 
         name={name}
@@ -154,7 +156,8 @@ const Weather = () => {
         humidity={rain.main.humidity}
         />  
       
-      </div>
+      </div>)
+      }
       <Socials/>
     </div>
 

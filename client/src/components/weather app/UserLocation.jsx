@@ -60,7 +60,7 @@ const UserLocation = ({space, pos, name, country, temp,kel}) => {
 
   return ( 
 
-    <div className={`${space && 'col-span-2'} hover:shadow-md hover:shadow-yellow-500 text-black cursor-pointer bg-white min-w-fit space-y-4 ring-1 w-full p-4 rounded-xl hover:scale-105  transition-all flex flex-col justify-between`}>
+    <div className={`${space && 'col-span-2'} hover:shadow-md hover:shadow-yellow-500 text-black cursor-pointer bg-white min-w-fit space-y-4 ring-1 w-full p-4 rounded-xl md:hover:scale-105  transition-all flex flex-col justify-between hover:ring-2 hover:ring-slate-900`}>
         {/* location */}
         <div className="flex items-center justify-between">
           <h2 className="text-sm">

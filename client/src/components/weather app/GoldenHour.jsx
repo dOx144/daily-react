@@ -25,7 +25,7 @@ const GoldenHour = ({space,rise,sSet}) => {
 
   return ( 
 
-    <div className={`col-span-2 md:col-span-1 hover:shadow-md hover:shadow-yellow-500 text-black cursor-pointer bg-white min-w-fit space-y-4 ring-1 w-full p-4 py-6 rounded-xl hover:scale-105  transition-all h-full`}>
+    <div className={`col-span-2 md:col-span-1 hover:shadow-md hover:shadow-yellow-500 text-black cursor-pointer bg-white min-w-fit space-y-4 ring-1 w-full p-4 py-6 rounded-xl md:hover:scale-105  transition-all h-full hover:ring-2 hover:ring-slate-900`}>
 
       <div className="flex items-end justify-around">
         <div className="space-y-4 text-center">
