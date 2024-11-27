@@ -6,8 +6,11 @@ import LonLat from "../components/weather app/LonLat";
 import WeatherWind from "../components/weather app/WeatherWind";
 import Socials from "../components/Socials";
 import Loading from "../components/Loading";
+import NoHero from "../components/dota/NoHero";
+import { useParams } from "react-router-dom";
 
 const Weather = () => {
+  const {id} = useParams()
   const [weatherData, setWeatherData] = useState(null)
   const [name, setname]=useState('')
   const [country, setCountry]=useState('')
@@ -15,6 +18,7 @@ const Weather = () => {
   const [kel, setKel] = useState(null)
   const [wetTime, setWetTime] = useState(0)
   const [isLoading, setIsLoading] = useState(true)
+  const [notExist, setNotExist] = useState(false)
   const [cord, setCord] = useState({
     lat:null,
     lon:null
@@ -73,10 +77,12 @@ const Weather = () => {
           wind:data?.wind || null,
       }));
       setIsLoading(false)
+      setNotExist(false)
 
     }catch(err){
       console.error(err.message)
       setLocQuery('')
+      setNotExist(true)
     }
   }
 
@@ -124,7 +130,9 @@ const Weather = () => {
       {/* div when error */}
       {/* {isErr && (<div className="text-red-300 text-4xl">{isErr.message}</div>)} */}
 
-      {isLoading ? <Loading/> :
+      
+
+      {isLoading ? <Loading/> : notExist ? <NoHero name={id}/> :
 
       (
       <div className="w-full grid grid-cols-1 lg:grid-cols-3 gap-1">

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import HeroSearch from "../components/dota/HeroSearch";
 import Loading from "../components/Loading";
 import allLogo from "../assets/dota/hero_universal.png";
@@ -11,7 +11,9 @@ import Socials from "../components/Socials";
 
 
 const DotaHero = () => {
-const {id} = useParams()
+  
+const nav = useNavigate()
+const { id } = useParams()
 const [isLoading, setIsLoading] = useState(true)
 const [heroData, setHeroData] = useState(null)
 const [notHero, setNotHero] = useState(false)
@@ -84,7 +86,7 @@ useEffect(()=>{
 
   return ( 
     <div className="w-full  text-white overflow-hidden md:max-w-screen-xl mx-auto mt-8 md:mt-24 p-4 md:p-8 space-y-8 md:space-y-16">
-      <h2 className="text-2xl md:text-5xl font-semibold">Dotapedia</h2>
+      <button onClick={()=>nav('/dota')} className="text-2xl md:text-4xl lg:text-5xl font-semibold text-slate-50">Dotapedia</button>
       <HeroSearch id={id}/>
       
       {isLoading ? (
@@ -94,17 +96,17 @@ useEffect(()=>{
           ) : (
               <div className="flex flex-col gap-4 md:flex-row md:gap-2">
                 <div className="w-full ring-1 p-2 space-y-2">
-                    {/* Hero Primary Attribute */}
-                    <div className="text-sm text-slate-400 font-semibold capitalize">
+
+                    {/* Hero Name */}
+                   <div>
+                     {/* Hero Primary Attribute */}
+                     <div className="text-sm text-slate-400 font-semibold capitalize">
                       <div className="flex items-center gap-1">
                         <span>Primary:</span>
                         <p className="text-slate-100">{heroData?.primary_attr}</p>
                         <img className="size-6" src={setLogo(heroData?.primary_attr)} alt="Primary Attribute Logo" />
                       </div>
                     </div>
-
-                    {/* Hero Name */}
-                   <div className="space-y-1">
                     <p className="text-4xl lg:text-5xl font-semibold">{heroData?.localized_name}</p>
                     <p className="text-sm font-bold text-slate-200">{heroData?.attack_type} - {heroData?.roles.map(e=>`${e}, `)}</p>
                    </div>

@@ -3,24 +3,36 @@ import HeroShowcase from "../components/dota/HeroShowcase";
 import Socials from '../components/Socials';
 import Loading from "../components/Loading";
 import HeroSearch from "../components/dota/HeroSearch";
+import allLogo from "../assets/dota/hero_universal.png";
+import intLogo from '../assets/dota/hero_intelligence.png';
+import agiLogo from "../assets/dota/hero_agility.png";
+import strLogo from "../assets/dota/hero_strength.png";
+import { useNavigate } from "react-router-dom";
+import AttriBtn from "../components/dota/AttriBtn";
 
 const Dota = () => {
   
+  const nav = useNavigate()
   const [heroes, setHeroes] = useState([])
   const [isLoading,setIsLoading] = useState(true)
   const [heroId, setHeroId] = useState('')
+  const [activeAttr, setActiveAttr] = useState({})
   const [attri, setAttri] = useState([
     {
       value:'agi',
+      logo:agiLogo
     },
     {
       value:'str',
+      logo:strLogo
     },
     {
       value:'int',
+      logo:intLogo
     },
     {
       value:'uni',
+      logo:allLogo
     }
   ])
   const [activeAttri, setActiveAttri] = useState([])
@@ -62,12 +74,6 @@ const Dota = () => {
     getHeroes()
   },[])
 
-  
-
-  const checkActiveAttri = (e) =>{
-    setActiveAttri(prev=>[...prev,e.target.value])
-    console.log(activeAttri);
-  }
   const checkActiveComplexity = (e) =>{
     setActiveAttri(prev=>[...prev,e.target.value])
     console.log(activeComplexity);
@@ -78,7 +84,7 @@ const Dota = () => {
 
         {/* hero title */}
       <div className="space-y-4">
-        <h2 className="text-2xl md:text-4xl lg:text-5xl font-semibold text-slate-50">Dotapedia</h2>
+        <button onClick={()=>nav('/dota')} className="text-2xl md:text-4xl lg:text-5xl font-semibold text-slate-50">Dotapedia</button>
         <p className="font-semibold text-slate-200">From versatile tacticians to relentless warriors and elusive tricksters, Dota 2's hero roster offers boundless variety. Claim your favorite hero's glory and dominate the battlefield with unmatched skill and game-changing ultimates</p>
       </div>
 
@@ -98,13 +104,12 @@ const Dota = () => {
               <h2 className="text-xl">Attributes</h2>
               <div className="flex gap-2 justify-between">
                 {attri.map((el,i) => (
-                  <input
-                  key={el + i}
-                  type="checkbox" 
-                  value={el.value}
-                  onClick={(e)=>checkActiveAttri(e)}
-                  className="size-4 md:size-5 bg-red-400"
-                    />
+                <AttriBtn 
+                key={el + i}
+                 el={el}
+                 setActiveAttr={setActiveAttr}
+                 activeAttr={activeAttr}
+                 />
                 ))}
               </div>
             </div>
