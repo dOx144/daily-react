@@ -33,7 +33,9 @@ const HeroSearch = ({id}) => {
     console.log('User is Searching for:' + userQuery);
     nav(`/dota/${capitalizeWords(userQuery)}`)
     setUserQuery('')
+    setTimeout(() => {
     window.location.reload();
+    }, 300);
   }//
 
   return ( 
