@@ -17,6 +17,12 @@ const Dota = () => {
   const [isLoading,setIsLoading] = useState(true)
   const [heroId, setHeroId] = useState('')
   const [activeAttr, setActiveAttr] = useState({})
+
+  const [filter, setFilter] = useState("");
+  const [filteredHeroes, setFilteredHeroes] = useState([]);
+  const [changeMain, setChangeMain] = useState(true)
+
+
   const [attri, setAttri] = useState([
     {
       value:'agi',
@@ -79,6 +85,17 @@ const Dota = () => {
     console.log(activeComplexity);
   }
 
+  const handleFilterChange = (filterValue) => {
+    setChangeMain(false)
+    setFilter(filterValue);
+    if (filterValue === "") {
+      setFilteredHeroes(heroes); // Reset to all heroes if no filter
+    } else {
+      const filtered = heroes.filter((hero) => hero.primary_attr === filterValue);
+      setFilteredHeroes(filtered);
+    }
+  };
+  
   return ( 
     <div className="w-full  text-white overflow-hidden md:max-w-screen-xl mx-auto mt-8 md:mt-24 p-4 md:p-8 space-y-8 md:space-y-16">
 
@@ -101,24 +118,27 @@ const Dota = () => {
           {/* filter by attributes */}
           <div className="flex items-center justify-between">
             <div className=" md:flex gap-2 items-center justify-center ">
-              <h2 className="text-xl">Attributes</h2>
-              <div className="flex gap-2 justify-between">
-                {attri.map((el,i) => (
-                <AttriBtn 
-                key={el + i}
-                 el={el}
-                 setActiveAttr={setActiveAttr}
-                 activeAttr={activeAttr}
-                 />
-                ))}
-              </div>
+              {/* <h2 className="text-xl">Attributes</h2> */}
+              <select className="flex gap-2 justify-between text-black p-1 rounded-md focus-within:outline-none"
+               id="filter"
+               value={filter}
+               onChange={(e) => handleFilterChange(e.target.value)}
+               >
+
+              <option value="">All</option>
+              <option value="str">Strength </option>
+              <option value="agi">Agility</option>
+              <option value="int">Intelligence</option>
+              <option value="all">Universal</option>
+
+              </select>
             </div>
 
             {/* filter by complexxity */}
-            <div className=" md:flex gap-2 items-center justify-center ">
+            {/* <div className=" md:flex gap-2 items-center justify-center ">
               <h2 className="text-xl">Complexxity</h2>
-              <div className="flex gap-2 justify-between">
-                {complexity.map((el,i) => (
+              <div className="flex gap-2 justify-between"> */}
+                {/* {complexity.map((el,i) => (
                     <input
                     key={el + i}
                     type="checkbox" 
@@ -126,17 +146,23 @@ const Dota = () => {
                     onClick={(e)=>checkActiveComplexity(e)}
                     className="size-4 md:size-5 bg-red-400"
                       />
-                  ))}
-              </div>
+                  ))} */}
+              {/* </div>
             </div>
+             */}
           </div>
+          
         </div>
 
       {/* {loading} */}
       {isLoading && <Loading/>}
 
       {/* hero showcase */}
+      <HeroShowcase heroes={filteredHeroes}/>
+
+      {changeMain && 
       <HeroShowcase heroes={heroes}/>
+      }
 
       </div>
 
