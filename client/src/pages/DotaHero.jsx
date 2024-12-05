@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import HeroSearch from "../components/dota/HeroSearch";
 import Loading from "../components/Loading";
 import allLogo from "../assets/dota/hero_universal.png";
@@ -8,6 +8,10 @@ import agiLogo from "../assets/dota/hero_agility.png";
 import strLogo from "../assets/dota/hero_strength.png";
 import NoHero from "../components/dota/NoHero";
 import Socials from "../components/Socials";
+import NextHero from "../components/dota/NextHero";
+import HeroAttri from "../components/dota/HeroAttri";
+import HeroPrimary from "../components/dota/HeroPrimary";
+import Herobase from "../components/dota/HeroBase";
 
 
 const DotaHero = () => {
@@ -16,6 +20,7 @@ const nav = useNavigate()
 const { id } = useParams()
 const [isLoading, setIsLoading] = useState(true)
 const [heroData, setHeroData] = useState(null)
+const [nextHero, setNextHero] = useState(null)
 const [notHero, setNotHero] = useState(false)
 
 function setLogo(x){
@@ -62,9 +67,25 @@ const fetchUserHero = async (heroId) => {
     }
 
     const data = await res.json();
+    // console.log(data);
 
     // Filter data for the specific hero
     const heroData = data.find(x => x.localized_name === heroId);
+
+    // get next hero 
+    let nextHeroId = data.indexOf(heroData) + 1;
+
+    // console.log(nextHeroId);
+    let nextHero = data[nextHeroId]
+
+    if(heroId === "Kez"){
+      nextHero = data[0]
+    }
+
+    setNextHero(nextHero)
+
+    //finish get next hero 
+
 
     if(heroData===undefined){
       setNotHero(true)
@@ -94,68 +115,29 @@ useEffect(()=>{
           ) : notHero ? (
             <NoHero name={id} />
           ) : (
-              <div className="flex flex-col gap-4 md:flex-row md:gap-2">
-                <div className="w-full ring-1 p-2 space-y-2">
+              <div className="flex flex-col gap-4 md:flex-row md:gap-2 *:rounded-md">
+                <div className="w-full ring-2 ring-slate-800 hover:ring-2 hover:ring-slate-500 shadow-xl hover:shadow-slate-700 p-2 space-y-2 transition-all">
 
                     {/* Hero Name */}
-                   <div>
-                     {/* Hero Primary Attribute */}
-                     <div className="text-sm text-slate-400 font-semibold capitalize">
-                      <div className="flex items-center gap-1">
-                        <span>Primary:</span>
-                        <p className="text-slate-100">{heroData?.primary_attr}</p>
-                        <img className="size-6" src={setLogo(heroData?.primary_attr)} alt="Primary Attribute Logo" />
-                      </div>
-                    </div>
-                    <p className="text-4xl lg:text-5xl font-semibold">{heroData?.localized_name}</p>
-                    <p className="text-sm font-bold text-slate-200">{heroData?.attack_type} - {heroData?.roles.map(e=>`${e}, `)}</p>
-                   </div>
+                  <HeroPrimary heroData={heroData} setLogo={setLogo}/>
+
+                <div className=" space-y-2 md:flex w-full md:items-stretch *:basis-1/2 gap-2">
 
                      {/* Hero Attributes */}
-                     <div>
-                      <h2 className="font-semibold text-lg">Attributes</h2>
-                      <div className="flex max-w-44 items-center gap-1">
-                        <img className="size-5" src={strLogo} alt="Str_icon" />
-                        <div className="flex items-center justify-between w-full">
-                          <p>Str</p>
-                          <div className="flex items-center gap-2">
-                            <p>
-                              {heroData.base_str}
-                            </p>
-                            <p className="text-xs translate-y-1 animate-pulse text-slate-300">+{heroData.str_gain} per lvl</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="flex max-w-44 items-center gap-1">
-                        <img className="size-5" src={agiLogo} alt="Agi_icon" />
-                        <div className="flex items-center justify-between w-full">
-                          <p>Agi</p>
-                          <div className="flex items-center gap-2">
-                            <p>
-                              {heroData.base_agi}
-                            </p>
-                            <p className="text-xs translate-y-1 animate-pulse text-slate-300">+{heroData.agi_gain} per lvl</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="flex max-w-44 items-center gap-1">
-                        <img className="size-5" src={intLogo} alt="Int_icon" />
-                        <div className="flex items-center justify-between w-full">
-                          <p>Int</p>
-                          <div className="flex items-center gap-2">
-                            <p> 
-                              {heroData.base_int}
-                            </p>
-                            <p className="text-xs translate-y-1 animate-pulse text-slate-300">+{heroData.int_gain} per lvl</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                      <HeroAttri strLogo={strLogo} agiLogo={agiLogo} intLogo={intLogo} heroData={heroData}/>
+
+                    {/* hero status */}
+                    <Herobase heroData={heroData}/>
+               </div>
+                 
+
+
 
                 </div>
-                <div className="ring-1 p-2 md:basis-1/4">
-                  <h2>Temp box</h2>
-                </div>
+
+                  {/* go to / next hero  */}
+                <NextHero nextHero={nextHero} setLogo={setLogo} nav={nav}/>
+
             </div>
             )}
 
