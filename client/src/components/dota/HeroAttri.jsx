@@ -10,7 +10,7 @@ const HeroAttri = ({strLogo, agiLogo, intLogo, heroData}) => {
           <p>
             {heroData.base_str}
           </p>
-          <p className="text-xs translate-y-1 animate-pulse text-slate-300">+{heroData.str_gain} per lvl</p>
+          <p className="min-w-20 text-xs translate-y-1 animate-pulse text-slate-300">+{heroData.str_gain} per lvl</p>
         </div>
       </div>
     </div>
@@ -22,7 +22,7 @@ const HeroAttri = ({strLogo, agiLogo, intLogo, heroData}) => {
           <p>
             {heroData.base_agi}
           </p>
-          <p className="text-xs translate-y-1 animate-pulse text-slate-300">+{heroData.agi_gain} per lvl</p>
+          <p className="min-w-20 text-xs translate-y-1 animate-pulse text-slate-300">+{heroData.agi_gain} per lvl</p>
         </div>
       </div>
     </div>
@@ -34,7 +34,7 @@ const HeroAttri = ({strLogo, agiLogo, intLogo, heroData}) => {
           <p> 
             {heroData.base_int}
           </p>
-          <p className="text-xs translate-y-1 animate-pulse text-slate-300">+{heroData.int_gain} per lvl</p>
+          <p className="min-w-20 text-xs translate-y-1 animate-pulse text-slate-300">+{heroData.int_gain} per lvl</p>
         </div>
       </div>
     </div>

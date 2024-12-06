@@ -3,9 +3,9 @@ const NextHero = ({nextHero, setLogo, nav}) => {
   return ( 
     <div className="ring-2 ring-slate-800 hover:ring-2 hover:ring-slate-500 shadow-xl hover:shadow-slate-700 transition-all p-2 md:basis-1/4 group">
                   {!nextHero && heroData.localized_name}
-                  <div className="flex flex-col group justify-between w-full h-full">
+                  <div className="flex flex-col group space-y-4 justify-between w-full h-full">
                    <div>
-                    <h2 className="font-semibold text-lg lg:text-xl">{nextHero?.localized_name}</h2>
+                    <h2 className="font-semibold text-xl md:text-2xl lg:text-4xl">{nextHero?.localized_name}</h2>
                       <div className="flex flex-col items-start gap-1 text-xs opacity-70 group-hover:opacity-95">
                         <div className="flex gap-1">
                           <span>Primary: </span>
