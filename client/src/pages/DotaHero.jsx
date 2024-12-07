@@ -121,14 +121,17 @@ useEffect(()=>{
                     {/* Hero Name */}
                   <HeroPrimary heroData={heroData} setLogo={setLogo}/>
 
-                  <div className=" space-y-2 md:flex w-full md:items-stretch *:basis-1/2 gap-2">
+                  <div className=" space-y-2 md:flex *:basis-1/2 gap-2">
 
-                      {/* Hero Attributes */}
+                      <div>
+                        {/* Hero Attributes */}
                         <HeroAttri strLogo={strLogo} agiLogo={agiLogo} intLogo={intLogo} heroData={heroData}/>
+                        
+                      </div>
 
                       {/* hero status */}
                       <Herobase heroData={heroData}/>
-                </div>
+                  </div>
 
                 </div>
                   {/* go to / next hero  */}

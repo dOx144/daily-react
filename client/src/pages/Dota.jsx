@@ -8,7 +8,6 @@ import intLogo from '../assets/dota/hero_intelligence.png';
 import agiLogo from "../assets/dota/hero_agility.png";
 import strLogo from "../assets/dota/hero_strength.png";
 import { useNavigate } from "react-router-dom";
-import AttriBtn from "../components/dota/AttriBtn";
 
 const Dota = () => {
   
@@ -133,23 +132,6 @@ const Dota = () => {
 
               </select>
             </div>
-
-            {/* filter by complexxity */}
-            {/* <div className=" md:flex gap-2 items-center justify-center ">
-              <h2 className="text-xl">Complexxity</h2>
-              <div className="flex gap-2 justify-between"> */}
-                {/* {complexity.map((el,i) => (
-                    <input
-                    key={el + i}
-                    type="checkbox" 
-                    value={el.value}
-                    onClick={(e)=>checkActiveComplexity(e)}
-                    className="size-4 md:size-5 bg-red-400"
-                      />
-                  ))} */}
-              {/* </div>
-            </div>
-             */}
           </div>
           
         </div>
