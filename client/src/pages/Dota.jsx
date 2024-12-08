@@ -8,6 +8,7 @@ import intLogo from '../assets/dota/hero_intelligence.png';
 import agiLogo from "../assets/dota/hero_agility.png";
 import strLogo from "../assets/dota/hero_strength.png";
 import { useNavigate } from "react-router-dom";
+import GoButton from "../components/GoButton";
 
 const Dota = () => {
   
@@ -40,21 +41,6 @@ const Dota = () => {
       logo:allLogo
     }
   ])
-  const [activeAttri, setActiveAttri] = useState([])
-
-  const [complexity, setComplexity] = useState([
-    {
-      value:'easy',
-    },
-    {
-      value:'medium',
-    },
-    {
-      value:'complex',
-    }
-  ])
-  const [activeComplexity, setActiveComplexity] = useState([])
-
 
   const getHeroes = async() =>{
     try{
@@ -79,6 +65,7 @@ const Dota = () => {
     getHeroes()
   },[])
 
+  // later feature 
   const checkActiveComplexity = (e) =>{
     setActiveAttri(prev=>[...prev,e.target.value])
     console.log(activeComplexity);
@@ -100,8 +87,13 @@ const Dota = () => {
 
         {/* hero title */}
       <div className="space-y-4">
-        <button onClick={()=>nav('/dota')} className="text-2xl md:text-4xl lg:text-5xl font-semibold text-slate-50">Dotapedia</button>
-        <p className="font-semibold text-slate-200">From versatile tacticians to relentless warriors and elusive tricksters, Dota 2's hero roster offers boundless variety. Claim your favorite hero's glory and dominate the battlefield with unmatched skill and game-changing ultimates</p>
+
+        <div className="flex w-full items-center justify-between">
+          <button onClick={()=>nav('/dota')} className="text-5xl md:text-6xl font-semibold text-slate-50">Dotapedia</button>
+            <GoButton link={'/'} name={"Go to Main"}/>
+        </div>
+
+        <p className="font-semibold text-slate-300">From versatile tacticians to relentless warriors and elusive tricksters, Dota 2's hero roster offers boundless variety. Claim your favorite hero's glory and dominate the battlefield with unmatched skill and game-changing ultimates</p>
       </div>
 
       {/* main content */}

@@ -95,11 +95,12 @@ const Weather = () => {
   function userSearch(e){
     setIsLoading(true)
     if(locQuery.trim()==='')
-    {
-      alert('Please put the city name first!')
-    }
-
-    // console.log(rain);
+      {
+        alert('Please put the city name first!')
+        return
+      }
+      
+      // console.log(rain);
     e.preventDefault()
     fetchWeatherData()
     setIsLoading(false)
@@ -162,6 +163,7 @@ const Weather = () => {
         speed={rain.wind.speed}
         deg = {rain.wind.deg}
         humidity={rain.main.humidity}
+        prob = {rain.main.rain_probability || "--Fixing--"}
         />  
       
       </div>)

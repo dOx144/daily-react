@@ -1,5 +1,4 @@
 import AttriElComp from "./AttriElComp"
-import OtherStatus from "./OtherStatus"
 
 const HeroAttri = ({strLogo, agiLogo, intLogo, heroData}) => {
 
@@ -19,15 +18,12 @@ const HeroAttri = ({strLogo, agiLogo, intLogo, heroData}) => {
 
 
   return ( 
-    <div className="ring-1 space-y-4 md:space-y-0 md:flex justify-between items-start *:basis-1/2">
-     <div>
+    <div className="space-y-4 lg:space-y-0 lg:flex justify-between items-start ">
+     <div className="w-full">
       <h2 className="font-semibold text-lg">Attributes</h2>
-        {attriArr.map(el=>(
-          <AttriElComp  logo={el.logo} gain={el.gain} base={el.base} name={el.name}/>
+        {attriArr.map((el, i)=>(
+          <AttriElComp key={el + i} logo={el.logo} gain={el.gain} base={el.base} name={el.name}/>
         ))}
-     </div>
-     <div className="ring-1">
-        <OtherStatus heroData={heroData}/>
      </div>
    </div>
    );
