@@ -28,7 +28,7 @@ const FoodItems = ({ data }) => {
 
       {/* Meal Name Overlay */}
       <div className="absolute z-10 w-full min-h-[25%] bottom-0 left-0 p-2 rounded-xl backdrop-blur-sm translate-y-full group-hover:translate-y-0 transition-all duration-500 shadow-inner shadow-slate-400 text-slate-100">
-        <h2 className="text-2xl md:text-4xl font-semibold">{mealName}</h2>
+        <h2 className="text-2xl md:text-4xl font-semibold text-slate-900">{mealName}</h2>
       </div>
     </div>
   );

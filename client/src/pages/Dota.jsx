@@ -63,6 +63,7 @@ const Dota = () => {
 
   useEffect(()=>{
     getHeroes()
+    document.title='Dota'
   },[])
 
   // later feature 

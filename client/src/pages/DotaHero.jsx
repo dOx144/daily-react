@@ -105,6 +105,7 @@ const fetchUserHero = async (heroId) => {
 
 useEffect(()=>{
   fetchUserHero(id)
+  document.title = 'Hero - ' + id
 },[])
 
 

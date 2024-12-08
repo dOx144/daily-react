@@ -84,7 +84,9 @@ const UserLocation = ({space, pos, name, country, temp,kel}) => {
 
           <div className="text-sm text-slate-500 flex items-center justify-between">
             <p>{today}</p>
-           {/* <Time/> */}
+            <div className="md:hidden">
+             <Time/>
+            </div>
           </div>
 
         </div>

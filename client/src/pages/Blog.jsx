@@ -1,6 +1,11 @@
+import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 const Blog = () => {
+  
+  useEffect(()=>{
+    document.title = 'Blogs'
+  },[])
 
   const {id} = useParams()
   return ( 

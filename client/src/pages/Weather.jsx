@@ -90,6 +90,7 @@ const Weather = () => {
   useEffect(()=>{
     fetchWeatherData()
     setLocQuery('')
+    document.title = "Weather"
   },[])
 
   function userSearch(e){
