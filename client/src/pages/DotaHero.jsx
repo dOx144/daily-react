@@ -14,6 +14,7 @@ import HeroPrimary from "../components/dota/HeroPrimary";
 import Herobase from "../components/dota/HeroBase";
 import OtherStatus from "../components/dota/OtherStatus"
 import GoButton from "../components/GoButton";
+import HeroWinRates from "../components/dota/HeroWinRates";
 
 
 
@@ -74,6 +75,7 @@ const fetchUserHero = async (heroId) => {
 
     // Filter data for the specific hero
     const heroData = data.find(x => x.localized_name === heroId);
+    console.log(heroData);
 
     // get next hero 
     let nextHeroId = data.indexOf(heroData) + 1;
@@ -119,19 +121,19 @@ useEffect(()=>{
 
       {/* hero search query */}
       <HeroSearch id={id}/>
-      
+       
       {isLoading ? (
             <Loading />
           ) : notHero ? (
             <NoHero name={id} />
           ) : (
-              <div className="grid md:grid-cols-3 *:rounded-md">
+              <div className=" grid gap-2 md:grid-cols-3 *:rounded-md">
                 
-                <div className="w-full ring-2 ring-slate-800 hover:ring-2 hover:ring-slate-500 shadow-xl hover:shadow-slate-700 p-2 space-y-2 transition-all md:col-span-2">
+                <div className="w-full ring-2 group ring-slate-800 hover:ring-2 hover:ring-slate-500 shadow-xl hover:shadow-slate-700 p-2 space-y-2 transition-all md:col-span-2">
 
                     {/* Hero Name */}
                   <HeroPrimary heroData={heroData} setLogo={setLogo}/>
-
+                  <hr className="border-slate-400 rounded-full group-hover:border-2 transition-border ease-in"/> 
                   <div className="w-full space-y-2 grid grid-cols-1 md:grid-cols-2 cursor-default">
 
                       {/* Hero Attributes */}
@@ -145,9 +147,13 @@ useEffect(()=>{
                   </div>
 
                 </div>
-                  {/* go to / next hero  */}
-                <NextHero nextHero={nextHero} setLogo={setLogo} nav={nav}/>
 
+                <div className="order-3 md:order-2">
+                  {/* go to / next hero  */}
+                  <NextHero nextHero={nextHero} setLogo={setLogo} nav={nav}/>
+                </div>
+
+                <HeroWinRates/>
             </div>
             )}
 

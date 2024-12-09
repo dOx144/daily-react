@@ -59,7 +59,7 @@ const OtherStatus = ({heroData}) => {
   }
 
   return ( 
-    <div className="text-sm col-span-2 sm:col-span-1">
+    <div className="text-sm col-span-2 sm:col-span-1 ring-1 md:hover::shadow-white md:hover:ring-1 rounded-xl shadow-sm md:hover:shadow-white transition-all">
       <table className="border-separate border-spacing-1  border-slate-500 border-spacing-x-4 w-full text-left">
 
         {/* table title */}
@@ -75,19 +75,19 @@ const OtherStatus = ({heroData}) => {
         <tbody>
           <tr>
             <td>
-              <div className="flex items-center gap-1">
+              <div className="flex items-center gap-1 hover:bg-slate-700 hover:ring-1 rounded-sm transition">
                 <LogoImg src={attack} msg={'Attack Damage'} />
                 {Math.floor(base_attack_min)} - {Math.floor(base_attack_max)}
               </div>
             </td>
             <td>
-              <div className="flex items-center gap-1">
+              <div className="flex items-center gap-1 hover:bg-slate-700 hover:ring-1 rounded-sm transition">
                <LogoImg src={armor_logo} msg={'Armor'} />
                 {Math.floor(base_armor)}
               </div>
             </td>
             <td>
-              <div className="flex items-center gap-1">
+              <div className="flex items-center gap-1 hover:bg-slate-700 hover:ring-1 rounded-sm transition">
                 <LogoImg src={base_movement_logo} msg={'Movement speed'} />
                 {base_movement}
               </div>
@@ -95,19 +95,19 @@ const OtherStatus = ({heroData}) => {
           </tr>
           <tr>
             <td> 
-              <div className="flex items-center gap-1">
+              <div className="flex items-center gap-1 hover:bg-slate-700 hover:ring-1 rounded-sm transition">
                 <LogoImg src={attack_time} msg={'Attack Time'}/>
                 {attack_rate}
               </div>
             </td>
             <td>
-              <div className="flex items-center gap-1">
+              <div className="flex items-center gap-1 hover:bg-slate-700 hover:ring-1 rounded-sm transition">
                 <LogoImg src={magic_resist_damage_logo} msg={'Magic Resist'} />
                 {base_resist.toFixed(0)}%
               </div>
             </td>
             <td>
-              <div className="flex items-center gap-1">
+              <div className="flex items-center gap-1 hover:bg-slate-700 hover:ring-1 rounded-sm transition">
                 <LogoImg src={base_turn_rate_logo} msg={'Turn rate'} />
                 {base_turn_rate}
               </div>
@@ -115,7 +115,7 @@ const OtherStatus = ({heroData}) => {
           </tr>
           <tr>
             <td>
-             <div className="flex items-center gap-1">
+             <div className="flex items-center gap-1 hover:bg-slate-700 hover:ring-1 rounded-sm transition">
               <LogoImg src={attack_range_logo} msg={"Attack Range"}/>  
               {attack_range}
              </div>
@@ -124,7 +124,7 @@ const OtherStatus = ({heroData}) => {
               {/* empty col */}
             </td>
             <td>
-              <div className="flex items-center gap-1">
+              <div className="flex items-center gap-1 hover:bg-slate-700 hover:ring-1 rounded-sm transition">
                 <LogoImg src={baseVision} msg={'Vision'}/>
                 <span title="Day Vision">{base_vision_day} </span> 
                 / 
@@ -134,7 +134,7 @@ const OtherStatus = ({heroData}) => {
           </tr>
           <tr>
             <td> 
-              <div className="flex items-center gap-1">
+              <div className="flex items-center gap-1 hover:bg-slate-700 hover:ring-1 rounded-sm transition">
                 <LogoImg src={porjectile_speed_logo} msg={'Projectile Speed'}/>
                 {projectile_speed}
               </div>

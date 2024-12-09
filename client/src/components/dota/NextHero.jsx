@@ -3,7 +3,7 @@ import Herobase from "./HeroBase";
 const NextHero = ({nextHero, setLogo, nav}) => {
 
   return ( 
-    <div className="ring-2 ring-slate-800 hover:ring-2 hover:ring-slate-500 shadow-xl hover:shadow-slate-700 transition-all p-2 group md:col-span-1">
+    <div className="ring-2 ring-slate-800 hover:ring-2 hover:ring-slate-500 shadow-xl hover:shadow-slate-700 transition-all p-2 group md:col-span-1 rounded-md">
       {!nextHero && heroData.localized_name}
       <div className="flex flex-col group space-y-4 justify-between w-full h-full">
        <div className="space-y-1">

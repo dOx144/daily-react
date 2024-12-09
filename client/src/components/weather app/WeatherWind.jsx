@@ -1,6 +1,6 @@
 const WeatherWind = ({space, main, mainType, speed, deg, humidity, prob}) => {
   return ( 
-    <div className={`${space && `col-span-${space}`} hover:shadow-md hover:shadow-yellow-500 text-black cursor-pointer bg-white min-w-fit space-y-4 ring-1 w-full p-4 rounded-xl md:hover:scale-105  transition-all h-full hover:ring-2 hover:ring-slate-900`}>
+    <div className={`${space && `col-span-${space}`} hover:shadow-md hover:shadow-yellow-500 text-black cursor-pointer bg-white min-w-fit space-y-4 ring-1 w-full p-4 rounded-xl md:hover:scale-105  transition-all h-full hover:ring-2 hover:ring-slate-900 `}>
 
         <div className="w-full">
           <p className="text-xs font-bold text-slate-500 ">Weather status</p>
