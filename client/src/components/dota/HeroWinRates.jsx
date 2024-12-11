@@ -1,4 +1,4 @@
-import LineGraph from "./LIneGraph";
+import LineGraph from "./LineGraph";
 import PieChart from "./PieChart";
 const HeroWinRates = ({heroData}) => {
 
