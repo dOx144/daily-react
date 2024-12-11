@@ -133,8 +133,7 @@ useEffect(()=>{
 
                     {/* Hero Name */}
                   <HeroPrimary heroData={heroData} setLogo={setLogo}/>
-                  <hr className="border-slate-400 rounded-full group-hover:border-2 transition-border ease-in"/> 
-                  <div className="w-full space-y-2 grid grid-cols-1 md:grid-cols-2 cursor-default">
+                  <div className="w-full space-y-2 grid grid-cols-1 lg:grid-cols-2 cursor-default">
 
                       {/* Hero Attributes */}
                       <HeroAttri strLogo={strLogo} agiLogo={agiLogo} intLogo={intLogo} heroData={heroData}/>
@@ -148,12 +147,12 @@ useEffect(()=>{
 
                 </div>
 
-                <div className="order-3 md:order-2">
+                <div className="order-3 md:order-2 flex items-end justify-center">
                   {/* go to / next hero  */}
                   <NextHero nextHero={nextHero} setLogo={setLogo} nav={nav}/>
                 </div>
 
-                <HeroWinRates/>
+                <HeroWinRates heroData={heroData}/>
             </div>
             )}
 

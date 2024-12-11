@@ -59,7 +59,7 @@ const OtherStatus = ({heroData}) => {
   }
 
   return ( 
-    <div className="text-sm col-span-2 sm:col-span-1 ring-1 md:hover::shadow-white md:hover:ring-1 rounded-xl shadow-sm md:hover:shadow-white transition-all">
+    <div className="text-sm col-span-2 sm:col-span-1 ring-2 rounded-md md:ring-0">
       <table className="border-separate border-spacing-1  border-slate-500 border-spacing-x-4 w-full text-left">
 
         {/* table title */}
@@ -75,9 +75,11 @@ const OtherStatus = ({heroData}) => {
         <tbody>
           <tr>
             <td>
-              <div className="flex items-center gap-1 hover:bg-slate-700 hover:ring-1 rounded-sm transition">
+              <div className="flex items-center gap-1 hover:bg-slate-700 hover:ring-1 rounded-sm transition ">
                 <LogoImg src={attack} msg={'Attack Damage'} />
+                <p className="min-w-fit">
                 {Math.floor(base_attack_min)} - {Math.floor(base_attack_max)}
+                </p>
               </div>
             </td>
             <td>
