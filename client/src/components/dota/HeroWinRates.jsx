@@ -118,16 +118,16 @@ const HeroWinRates = ({heroData}) => {
          <LineGraph data={data}/>
         </div>
         
-        <div className="hidden w-full md:grid grid-cols-1 sm:grid-cols-3 gap-8">
-          <div className=" self-center place-self-center">
-            <h2 className="font-semibold text-slate-300">Turbo Status</h2>
+        <div className=" w-full grid grid-cols-3 gap-8">
+          <div className="w-full h-full">
+            <h2 className="font-semibold text-slate-300 ">Turbo Status</h2>
             <PieChart data={hero_WR(turbo_WR, turbo_LR)}/>
           </div>
-          <div className=" self-center place-self-center">
+          <div className="w-full h-full">
             <h2 className="font-semibold text-slate-300">Pub Status</h2>
             <PieChart data={hero_WR(pub_WR, pub_LR)}/>
           </div>
-          <div className=" self-center place-self-center">
+          <div className="w-full h-full">
             <h2 className="font-semibold text-slate-300">Pro Scene</h2>
             <PieChart data={hero_WR(pro_WR, pro_LR)}/>
           </div>
