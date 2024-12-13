@@ -90,7 +90,7 @@ const Dota = () => {
       <div className="space-y-4">
 
         <div className="flex w-full items-center justify-between">
-          <button onClick={()=>nav('/dota')} className="text-5xl md:text-6xl font-semibold text-slate-50">Dotapedia</button>
+          <button onClick={()=>nav('/dota')} className="text-5xl md:text-6xl font-semibold text-slate-50 font-Audiowide">Dotapedia</button>
             <GoButton link={'/'} name={"Go to Main"}/>
         </div>
 

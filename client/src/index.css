@@ -9,19 +9,18 @@
 }
 
 body{
-  background-color: #1C1C1E;
+  background-color: #191a19;
 }
 /* src/index.css */
-@font-face {
-  font-family: 'Noto Sans';
-  src: url('/src/assets/fonts/NotoSans-Regular.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
+@font-face{
+  font-family: 'Audiowide';
+  src: local('Audiowide-Regular'), url('./assets/fonts/Audiowide-Regular.ttf') format("truetype");
 }
-
-@font-face {
-  font-family: 'Noto Sans';
-  src: url('/src/assets/fonts/NotoSans-Bold.woff2') format('woff2');
-  font-weight: 700;
-  font-style: normal;
+@font-face{
+  font-family: 'Opensans';
+  src: local('OpenSans-Regular'), url('./assets/fonts/OpenSans-Regular.ttf');
+}
+@font-face{
+  font-family: 'Orbitron';
+  src: local('Orbitron-Regular'), url('./assets/fonts/Orbitron-Regular.ttf');
 }

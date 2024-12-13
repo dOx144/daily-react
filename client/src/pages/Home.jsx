@@ -8,7 +8,7 @@ const Home = () => {
 
   return (
     <div className=' flex flex-col p-4 h-screen items-center justify-between'>
-      <div className='flex bg-[#1C1C1E] text-white flex-col  items-center justify-center gap-5 xl:flex-row h-full'>
+      <div className='flex text-white flex-col  items-center justify-center gap-5 xl:flex-row h-full'>
         {/* <Cta link='/blogs' goto={'blogs'} /> */}
           <div className='flex'>
             <Cta link='/weather' goto={'weather'} />

@@ -115,7 +115,7 @@ useEffect(()=>{
     <div className="w-full  text-white overflow-hidden md:max-w-screen-xl mx-auto mt-8 md:mt-24 p-4 md:p-8 space-y-8 md:space-y-16">
 
       <div className="flex w-full items-center justify-between">
-       <button onClick={()=>nav('/dota')} className="text-2xl md:text-4xl lg:text-5xl font-semibold text-slate-50">Dotapedia</button>
+       <button onClick={()=>nav('/dota')} className="text-2xl md:text-4xl lg:text-5xl font-semibold text-slate-50 font-Audiowide  ">Dotapedia</button>
         <GoButton link={'/'} name={"Go to Main"}/>
       </div>
 
@@ -127,7 +127,7 @@ useEffect(()=>{
           ) : notHero ? (
             <NoHero name={id} />
           ) : (
-              <div className=" grid gap-2 md:grid-cols-3 *:rounded-md">
+              <div className=" grid gap-2 md:grid-cols-3 *:rounded-md font-Opensans cursor-default">
                 
                 <div className="w-full ring-2 group ring-slate-800 hover:ring-2 hover:ring-slate-500 shadow-xl hover:shadow-slate-700 p-2 space-y-2 transition-all md:col-span-2">
 

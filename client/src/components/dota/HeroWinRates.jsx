@@ -110,7 +110,10 @@ const HeroWinRates = ({heroData}) => {
   return ( 
     <div className=" md:col-span-3 order-2 p-2 cursor-default">
       <div>
-        <p className="font-semibold text-2xl">{heroData.localized_name + ' status' || 'Hero Status'}</p>  
+        <p className="font-semibold text-2xl">
+          {/* {heroData.localized_name + ' status' || 'Hero Status'} */}
+          Games Status
+          </p>  
         <p className="self-end text-slate-400 text-xs animate-pulse">({((turbo_wins + pub_wins + pro_wins)/(turbo_picks + pub_picks + pro_picks) * 100).toFixed(2)} % Winrate)</p>
       </div>
      <div className="flex w-full items-center justify-between flex-col gap-2">

@@ -11,15 +11,13 @@ const IntroCard = ({name, type, role, primary, id}) => {
     uni:"#A3320B"
   }
 
-  const dynamicColor = () => '#fff'
-
   const clgHero = () => {
     console.log('User clicked on ' , name);
     nav(`/dota/${name}`)
   }
   return ( 
-    <div onClick={()=>clgHero(colorSets,primary)} className={`p-4 bg-[#f7f7f7] cursor-pointer hover:scale-105 transition-all shadow-2xl rounded-md text-black hover:ring-4 hover:ring-black `}>
-      <h2 className="text-3xl font-semibold lg:text-4xl min-w-fit">{name}</h2>
+    <div onClick={()=>clgHero(colorSets,primary)} className={`p-4 bg-[#f7f7f7] cursor-pointer hover:scale-[102%] transition-all shadow-2xl rounded-md text-black hover:ring-4 hover:ring-[#1B5E20] `}>
+      <h2 className="text-3xl font-semibold lg:text-4xl min-w-fit font-Opensans">{name}</h2>
       <div className="-space-y-2 text-slate-600">
         <p className="flex items-center min-w-fit">
           <span className="text-sm basis-1/3 min-w-fit">Primary </span> 
