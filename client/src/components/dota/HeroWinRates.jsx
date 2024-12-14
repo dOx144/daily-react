@@ -15,8 +15,8 @@ const HeroWinRates = ({heroData}) => {
 
   const pub_picks = heroData.pub_pick;
   const pub_wins = heroData.pub_win;
-  console.log(pub_picks);
-  console.log(pub_wins);
+  // console.log(pub_picks);
+  // console.log(pub_wins);
 
   const pro_picks = heroData.pro_pick;
   const pro_wins = heroData.pro_win;

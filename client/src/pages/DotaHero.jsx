@@ -75,7 +75,7 @@ const fetchUserHero = async (heroId) => {
 
     // Filter data for the specific hero
     const heroData = data.find(x => x.localized_name === heroId);
-    console.log(heroData);
+    // console.log(heroData);
 
     // get next hero 
     let nextHeroId = data.indexOf(heroData) + 1;

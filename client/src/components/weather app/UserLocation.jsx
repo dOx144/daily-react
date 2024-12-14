@@ -75,7 +75,7 @@ const UserLocation = ({space, pos, name, country, temp,kel}) => {
         </div>
 
         {/* temp status */}
-        <p className={`${pos ? `text-${pos}xl` : 'text-5xl' }  md:text-8xl transition-all`}><span>{isCelc ? temp + '°C' : toFar(kel) + "°F"}</span></p>
+        <p title="Current Temperature" className={`${pos ? `text-${pos}xl` : 'text-5xl' }  md:text-8xl transition-all`}><span>{isCelc ? temp + '°C' : toFar(kel) + "°F"}</span></p>
 
 
         {/* extra information */}

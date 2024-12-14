@@ -16,7 +16,7 @@ const IntroCard = ({name, type, role, primary, id}) => {
     nav(`/dota/${name}`)
   }
   return ( 
-    <div onClick={()=>clgHero(colorSets,primary)} className={`p-4 bg-[#f7f7f7] cursor-pointer hover:scale-[102%] transition-all shadow-2xl rounded-md text-black hover:ring-4 hover:ring-[#1B5E20] `}>
+    <div onClick={()=>clgHero(colorSets,primary)} className={`p-4 bg-[#f7f7f7] cursor-pointer hover:scale-[102%] transition-all shadow-2xl rounded-md text-black`}>
       <h2 className="text-3xl font-semibold lg:text-4xl min-w-fit font-Opensans">{name}</h2>
       <div className="-space-y-2 text-slate-600">
         <p className="flex items-center min-w-fit">

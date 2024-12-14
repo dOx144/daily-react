@@ -67,10 +67,10 @@ const Dota = () => {
   },[])
 
   // later feature 
-  const checkActiveComplexity = (e) =>{
-    setActiveAttri(prev=>[...prev,e.target.value])
-    console.log(activeComplexity);
-  }
+  // const checkActiveComplexity = (e) =>{
+  //   setActiveAttri(prev=>[...prev,e.target.value])
+  //   console.log(activeComplexity);
+  // }
 
   const handleFilterChange = (filterValue) => {
     setChangeMain(false)
@@ -83,6 +83,11 @@ const Dota = () => {
     }
   };
   
+  const handleClick = (e) =>{
+    console.log(e.currentTarget.value + " Clicked!");
+    handleFilterChange(e.currentTarget.value)
+    // console.log(filteredHeroes);
+  }
   return ( 
     <div className="w-full  text-white overflow-hidden md:max-w-screen-xl mx-auto mt-8 md:mt-24 p-4 md:p-8 space-y-8 md:space-y-16">
 
@@ -105,28 +110,22 @@ const Dota = () => {
 
       {/* filter section  */}
         <div className="">
-          <h2 className="text-slate-200">Filter heroes:</h2>
+          <h2 className="font-Opensans text-slate-300">Filter Attributes:</h2>
 
-          {/* filter by attributes */}
-          <div className="flex items-center justify-between">
-            <div className=" md:flex gap-2 items-center justify-center ">
-              {/* <h2 className="text-xl">Attributes</h2> */}
-              <select className="flex gap-2 justify-between text-black p-1 rounded-md focus-within:outline-none"
-               id="filter"
-               value={filter}
-               onChange={(e) => handleFilterChange(e.target.value)}
-               >
-
-              <option value="">All</option>
-              <option value="str">Strength </option>
-              <option value="agi">Agility</option>
-              <option value="int">Intelligence</option>
-              <option value="all">Universal</option>
-
-              </select>
-            </div>
+          <div className="flex gap-2 *:size-8 ">
+            <button onClick={e=>handleClick(e)} value={'agi'} className="opacity-75 hover:opacity-100 active:opacity-100">
+              <img src={agiLogo} alt="attribute_logo" title='Agility'/>
+            </button>
+            <button onClick={handleClick} value={'str'} className="opacity-75 hover:opacity-100 active:opacity-100">
+              <img src={strLogo} alt="attribute_logo" title='Strength'/>
+            </button>
+            <button onClick={handleClick} value={'int'} className="opacity-75 hover:opacity-100 active:opacity-100">
+              <img src={intLogo} alt="attribute_logo" title='Intelligence'/>
+            </button>
+            <button onClick={handleClick} value={'all'} className="opacity-75 hover:opacity-100 active:opacity-100">
+              <img src={allLogo} alt="attribute_logo" title='Universals'/>
+            </button>
           </div>
-          
         </div>
 
       {/* {loading} */}
